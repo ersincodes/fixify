@@ -4,32 +4,32 @@ export interface IImage extends Document {
   title: string;
   transformationType: string;
   publicId: string;
-  secureUrl: string; // URL type in Schema translates to string in TypeScript, assuming validation is handled elsewhere
-  width?: number; // Optional property
-  height?: number; // Optional property
-  config?: object; // More specific type could be used if the shape of config is known
-  transformationUrl?: string; // Optional, same rationale as secureUrl
-  aspectRatio?: string; // Optional property
-  color?: string; // Optional property
-  prompt?: string; // Optional property
+  secureURL: string;
+  width?: number;
+  height?: number;
+  config?: object;
+  transformationUrl?: string;
+  aspectRatio?: string;
+  color?: string;
+  prompt?: string;
   author: {
     _id: string;
     firstName: string;
     lastName: string;
-  }; // Assuming the reference will be handled as a string ID in TypeScript
-  createdAt?: Date; // Default value is handled by the DB, but it's included here for completeness
-  updatedAt?: Date; // Same rationale as createdAt
+  };
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const ImageSchema = new Schema({
   title: { type: String, required: true },
   transformationType: { type: String, required: true },
   publicId: { type: String, required: true },
-  secureUrl: { type: URL, required: true },
+  secureURL: { type: String, required: true },
   width: { type: Number },
   height: { type: Number },
   config: { type: Object },
-  transformationUrl: { type: URL },
+  transformationUrl: { type: String },
   aspectRatio: { type: String },
   color: { type: String },
   prompt: { type: String },
